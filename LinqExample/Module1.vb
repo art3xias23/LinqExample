@@ -1,4 +1,9 @@
-﻿Module LINQModule
+﻿Option Strict On
+Imports LinqExample
+
+
+
+Module LINQModule
 
     Public Class cEmployee
         Public Property Id As Integer
@@ -23,11 +28,13 @@
         Public Property City As String
         Public Property State As String
         Public Property Zip As String
+
+
     End Class
 
     Public Class cAccessPoints
         Public Property Id As Integer
-        Public Property Name As Integer
+        Public Property Name As String
 
     End Class
 
@@ -55,7 +62,36 @@
             .Name = "Time Sheets"}
 
         Dim lstEmployees As IEnumerable(Of cEmployee) = New List(Of cEmployee)({
-                                                                               })
+           New cEmployee() With {.Id = 1,
+                                 .FirstName = "Daniel",
+                                 .LastName = "Bewley",
+                                 .YearsWorked = 5,
+                                 .PhoneNumber = "9080802",
+                                 .Address = New cAddress() With {
+                                         .Address1 = "bla bla",
+                                         .City = "Haskovo",
+                                         .State = "TX",
+                                         .Zip = "78437493"},
+                                 .AccessPoints = New List(Of cAccessPoints)({oAllAccess})},
+           New cEmployee() With {
+                .Id = 2,
+                .FirstName = "Tino",
+                .LastName = "Coleson",
+                .YearsWorked = 5,
+                .PhoneNumber = "92839231",
+                .Address = New cAddress() With {
+                    .Address1 = "dasd",
+                    .Address2 = "dsadas",
+                    .City = "",
+                    .Zip = "2121",
+                    .State = "AZ"},
+                .AccessPoints = New List(Of cAccessPoints)({oAllAccess, oPayrollAccess})
+}})
+
+
+
+
+
 
 
     End Sub
