@@ -87,9 +87,27 @@ Module LINQModule
                     .State = "AZ"},
                 .AccessPoints = New List(Of cAccessPoints)({oAllAccess, oPayrollAccess})
 }})
+        'Basic Operations in SQL format
+
+        Dim lstSelectedEmployees As IEnumerable(Of cEmployee) =
+            From oEmployee As cEmployee In lstEmployees
+            Where oEmployee.YearsWorked >= 2
+            Select oEmployee
 
 
+        'Ordered by Last Name
+        lstSelectedEmployees =
+            From eEmployee As cEmployee In lstEmployees
+            Order By eEmployee.LastName
+            Select eEmployee
 
+        'Combining Where/Order By
+        'Multiple Order By
+        lstEmployees =
+            From aEmployee As cEmployee In lstEmployees
+            Where aEmployee.Address.City = "Enaha"
+            Order By aEmployee.FirstName Descending, aEmployee Ascending
+            Select aEmployee
 
 
 
